@@ -15,10 +15,18 @@
     nr_octeti  db 0                ; numarul de valori introduse 
     cuvant_c   dw 0                ; rezultatul pe 16 biti 
 
+
     msg_sortat db 13, 10, 'sirul a fost sortat descrescator.', 13, 10, '$'
     msg_biti1  db 13, 10, 'octetul cu cei mai multi biti de 1 se afla la pozitia: $'
     max_bits   db 0                ; retine numarul maxim de biti gasit
     pos_max    db 0                ; retine pozitia octetului respectiv
+
+    msg_rotire db 13, 10, 'sirul dupa rotiri: ', 13, 10, '$'
+    msg_bin    db ' (binar): $'
+    msg_hex    db ' (hex): $'
+    new_line   db 13, 10, '$'
+
+
 
 .code
 start:
@@ -94,6 +102,7 @@ or_loop:
     mov al, [si]
     shr al, 2          ; aliniere biti 2-5
     and al, 0fh        
+    or dl, al          ; acumulare or 
     or dl, al          ; acumulare or
     inc si
     loop or_loop
@@ -118,6 +127,10 @@ suma_loop:
     int 21h
     
     mov dx, cuvant_c
+    xchg dh, dl        ; pregatire afisare hex 
+    call afisare_hex_16
+
+
     xchg dh, dl        ; pregatire afisare hex
     call afisare_hex_16
 
@@ -176,6 +189,58 @@ nu_e_maxim:
     mov ah, 02h
     int 21h
 
+    mov ah, 09h
+    lea dx, msg_rotire
+    int 21h
+
+    xor bx, bx         ; index sir
+    mov cl, nr_octeti
+    mov ch, 0
+
+loop_rotiri:
+    mov al, sir_octeti[bx]
+    push cx
+
+    ; calcul n = suma primilor 2 biti ai octetului
+    mov dl, al
+    rol dl, 1          ; aducem bitul 7 in carry
+    mov dh, 0
+    adc dh, 0          ; dh = bit 7
+    rol dl, 1          ; aducem bitul 6 in carry
+    adc dh, 0          ; dh = bit 7 + bit 6 (rezultatul n)
+
+    ; rotire spre stanga cu n pozitii
+    mov cl, dh         ; cl = n
+    rol al, cl         ; rotire circulara
+    mov sir_octeti[bx], al ; salvam inapoi in sir
+
+    ; afisare binar
+    mov ah, 09h
+    lea dx, msg_bin
+    int 21h
+
+    mov al, sir_octeti[bx]
+    call afisare_bin_8
+
+    ; afisare hex
+    mov ah, 09h
+    lea dx, msg_hex
+    int 21h
+
+    mov dl, sir_octeti[bx]
+    call afisare_hex_8
+
+    ; trecere la rand nou
+    mov ah, 09h
+    lea dx, new_line
+    int 21h
+
+    pop cx
+    inc bx
+    loop loop_rotiri
+
+
+
     mov ah, 4ch
     int 21h
 
@@ -211,5 +276,44 @@ print_h:
     pop cx
     ret
 afisare_hex_16 endp
+
+afisare_bin_8 proc    ; afiseaza al in binar
+    push cx
+    mov cx, 8
+    mov bl, al
+loop_bin:
+    rol bl, 1
+    mov dl, '0'
+    adc dl, 0
+    mov ah, 02h
+    int 21h
+    loop loop_bin
+    pop cx
+    ret
+afisare_bin_8 endp
+
+afisare_hex_8 proc    ; afiseaza dl in hex
+    push cx
+    mov al, dl
+    shr al, 4         ; nibble superior
+    call hex_digit
+    mov al, dl
+    and al, 0fh       ; nibble inferior
+    call hex_digit
+    pop cx
+    ret
+afisare_hex_8 endp
+
+hex_digit proc        ; afiseaza cifra hex din al
+    add al, '0'
+    cmp al, '9'
+    jbe print_d
+    add al, 7
+print_d:
+    mov dl, al
+    mov ah, 02h
+    int 21h
+    ret
+hex_digit endp
 
 end start
