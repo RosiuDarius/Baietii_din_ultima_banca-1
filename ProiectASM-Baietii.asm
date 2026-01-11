@@ -103,6 +103,7 @@ or_loop:
     shr al, 2          ; aliniere biti 2-5
     and al, 0fh        
     or dl, al          ; acumulare or 
+    or dl, al          ; acumulare or
     inc si
     loop or_loop
     
@@ -129,6 +130,9 @@ suma_loop:
     xchg dh, dl        ; pregatire afisare hex 
     call afisare_hex_16
 
+
+    xchg dh, dl        ; pregatire afisare hex
+    call afisare_hex_16
 
     ; sortare descrescatoare 
     mov cl, nr_octeti
