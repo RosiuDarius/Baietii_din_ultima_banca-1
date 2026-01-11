@@ -15,6 +15,11 @@
     nr_octeti  db 0                ; numarul de valori introduse 
     cuvant_c   dw 0                ; rezultatul pe 16 biti 
 
+    msg_sortat db 13, 10, 'sirul a fost sortat descrescator.', 13, 10, '$'
+    msg_biti1  db 13, 10, 'octetul cu cei mai multi biti de 1 se afla la pozitia: $'
+    max_bits   db 0                ; retine numarul maxim de biti gasit
+    pos_max    db 0                ; retine pozitia octetului respectiv
+
 .code
 start:
     mov ax, @data
@@ -89,7 +94,7 @@ or_loop:
     mov al, [si]
     shr al, 2          ; aliniere biti 2-5
     and al, 0fh        
-    or dl, al          ; acumulare or [cite: 58]
+    or dl, al          ; acumulare or
     inc si
     loop or_loop
     
@@ -113,10 +118,64 @@ suma_loop:
     int 21h
     
     mov dx, cuvant_c
-    xchg dh, dl        ; pregatire afisare hex [cite: 99]
+    xchg dh, dl        ; pregatire afisare hex
     call afisare_hex_16
 
-    ; aici se termina pasul 1. codul lui alin va incepe dupa aceasta linie.
+    ; sortare descrescatoare 
+    mov cl, nr_octeti
+    dec cl             
+sort_exterior:
+    push cx
+    lea si, sir_octeti
+sort_interior:
+    mov al, [si]
+    cmp al, [si+1]     
+    jae nu_schimba     
+    xchg al, [si+1]    
+    mov [si], al
+nu_schimba:
+    inc si
+    loop sort_interior
+    pop cx
+    loop sort_exterior
+
+    mov ah, 09h
+    lea dx, msg_sortat
+    int 21h
+
+    ; gasire octet cu numar maxim de biti
+    xor bx, bx         
+    mov cl, nr_octeti
+    mov ch, 0
+find_max_bits:
+    mov al, sir_octeti[bx]
+    push cx
+    xor dl, dl         ; dl numara bitii de 1
+    mov cx, 8
+numara_biti:
+    shl al, 1          ; extragem bitul in carry
+    adc dl, 0          ; adunam carry la dl
+    loop numara_biti
+
+    cmp dl, max_bits
+    jbe nu_e_maxim
+    mov max_bits, dl
+    mov pos_max, bl    ; salvam pozitia
+nu_e_maxim:
+    pop cx
+    inc bl
+    loop find_max_bits
+
+    ; afisare pozitie
+    mov ah, 09h
+    lea dx, msg_biti1
+    int 21h
+    mov al, pos_max
+    add al, '0'        ; convertim in caracter
+    mov dl, al
+    mov ah, 02h
+    int 21h
+
     mov ah, 4ch
     int 21h
 
