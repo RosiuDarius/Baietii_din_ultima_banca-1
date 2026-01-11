@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.3.0">
+  <diagram name="Pagină-1" id="3Ji1D6cW7smK81zffzTY">
+    <mxGraphModel dx="1426" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-3" edge="1" parent="1" source="o8y8NkLMmFsGVUI-dStC-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="o8y8NkLMmFsGVUI-dStC-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=18;" value="Start" vertex="1">
+          <mxGeometry height="140" width="196" x="297" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-5" edge="1" parent="1" source="o8y8NkLMmFsGVUI-dStC-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="o8y8NkLMmFsGVUI-dStC-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-2" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=18;" value="Citire Date (int 21h, 0Ah) (hex)" vertex="1">
+          <mxGeometry height="70" width="270" x="260" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-7" edge="1" parent="1" source="o8y8NkLMmFsGVUI-dStC-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="o8y8NkLMmFsGVUI-dStC-6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;" value="Conversie ASCII in Binar&lt;div&gt;Calcul cuvant C (XOR, OR, Suma)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="255" x="267.5" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-9" edge="1" parent="1" source="o8y8NkLMmFsGVUI-dStC-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="o8y8NkLMmFsGVUI-dStC-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-6" parent="1" style="whiteSpace=wrap;html=1;fontSize=18;rounded=1;" value="Sortare Descrescatoare (Bubble Sort)" vertex="1">
+          <mxGeometry height="125" width="267.5" x="261.25" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-11" edge="1" parent="1" source="o8y8NkLMmFsGVUI-dStC-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="o8y8NkLMmFsGVUI-dStC-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-8" parent="1" style="whiteSpace=wrap;html=1;fontSize=18;rounded=1;" value="Determinare octet cu biti de&amp;nbsp;&lt;div&gt;1 &amp;gt; 3&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110.5" width="265" x="262.5" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-15" edge="1" parent="1" source="o8y8NkLMmFsGVUI-dStC-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="o8y8NkLMmFsGVUI-dStC-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-10" parent="1" style="whiteSpace=wrap;html=1;fontSize=18;rounded=1;" value="Calcul N (suma primilor 2 biti)&lt;br&gt;Rotire circulara la stanga cu N" vertex="1">
+          <mxGeometry height="124.25" width="265" x="263.75" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-17" edge="1" parent="1" source="o8y8NkLMmFsGVUI-dStC-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="o8y8NkLMmFsGVUI-dStC-16" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-14" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=18;rounded=1;" value="Afisare sir rezultat" vertex="1">
+          <mxGeometry height="63.63" width="253.75" x="269.38" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="o8y8NkLMmFsGVUI-dStC-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;" value="STOP" vertex="1">
+          <mxGeometry height="110" width="261.87" x="265.63" y="1020" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
