@@ -1,5 +1,5 @@
-# Baietii_din_ultima_banca-1
-Proiect ASC realizat de Baietii din ultima banca: Rosiu Darius, Alin Silaghi si Sebastian Simion
+# Byte Array Manipulation and Bitwise Operations – University team project 
+Proiect ASC realizat de: Rosiu Darius, Alin Silaghi si Sebastian Simion
 
 
 DOCUMENTAȚIE PROIECT ASSEMBLY (8086) 
